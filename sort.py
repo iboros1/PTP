@@ -15,7 +15,12 @@ from file import a
 
 
 
+
 def sorting(a):
-    print(a)
+    b = {}
+    for element in a:
+        print(element.keys())
+        b.update(element)
+        print(sorted(b))
 
 sorting(a)
