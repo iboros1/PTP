@@ -23,10 +23,12 @@ def correct(dict_list, main_dict):
     for line in dict_list:
         d_k_v = line.split(" ")
         if d_k_v[0] == '\n':
-            temp_dict = {count}
-            temp_dict.update(new_dict)
+            temp_dict = {}
+            count = str(count)
+            temp_dict[count] = new_dict
             main_dict.update(temp_dict)
             new_dict = {}
+            count = int(count)
             count += 1
         else:
             d_k_v[1] = d_k_v[1].replace("\n", "")
