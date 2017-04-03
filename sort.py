@@ -10,8 +10,40 @@
 # form <key> <whitespace> <value>. Each list item is split by an empty row. The output is a file containing a list of
 # integers specifying the dictionary list in sorted order. Each integer identifies a dictionary in the order they were
 # received in the input file.
-from file import a
 
+
+dict_list = open("file.py", "r").readlines()
+
+main_dict = {}
+
+
+def correct(dict_list, main_dict):
+    count = 1
+    new_dict = {}
+    for line in dict_list:
+        d_k_v = line.split(" ")
+        if d_k_v[0] == '\n':
+            temp_dict = {count}
+            temp_dict.update(new_dict)
+            main_dict.update(temp_dict)
+            new_dict = {}
+            count += 1
+        else:
+            d_k_v[1] = d_k_v[1].replace("\n", "")
+            new_dict[d_k_v[0]] = d_k_v[1]
+
+
+    print(main_dict)
+
+    m_list = sorted(main_dict)
+    f = open('rezult', 'w')
+    for key in m_list:
+        f.write(str(main_dict[key][1]) + "\n")
+
+
+    # for key in sorted(main_dict):
+    #     # sort_list.update((key, main_dict[key]))
+    #     print(key, main_dict[key])
 
 
 
@@ -23,4 +55,6 @@ def sorting(a):
         b.update(element)
         print(sorted(b))
 
-sorting(a)
+correct(dict_list, main_dict)
+
+

@@ -14,9 +14,9 @@ def anyw(a, b):
     for elem in a:
         if type(a[elem]) == list:
             listb(b, a, elem)
-        if type(a[elem]) == int:
+        elif type(a[elem]) == int:
             intb(b, a, elem)
-        if type(a[elem]) == str:
+        elif type(a[elem]) == str:
             strb(b, a, elem)
         if type(a[elem]) == set:
             setb(b, a, elem)
@@ -32,7 +32,7 @@ def listb(b, a, elem):
             if type(a[elem]) == type(b[item]):
                 a[elem].extend(b[item])
             else:
-                a[elem]= a[elem],  (b[item])
+                a[elem] = a[elem],  (b[item])
             print(a)
 
 
