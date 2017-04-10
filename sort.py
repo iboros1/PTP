@@ -34,29 +34,40 @@ def correct(dict_list, main_dict):
             d_k_v[1] = d_k_v[1].replace("\n", "")
             new_dict[d_k_v[0]] = d_k_v[1]
 
-
     print(main_dict)
 
-    m_list = sorted(main_dict)
+
+def master_orders_list(main_dict):
+    list_tulp = []
+    for dict in main_dict:
+        if len(main_dict[dict]) > 1:
+            temp = []
+            for sub_dict in main_dict[dict]:
+                temp.append(sub_dict)
+                temp.sort()
+                t2 = dict, temp[0]
+            list_tulp.append(t2)
+        else:
+            for sub_dict in main_dict[dict]:
+                t1 = dict, sub_dict
+                list_tulp.append(t1)
+    print(list_tulp)
+    return list_tulp
+
+
+
+def bubble_sort(items):
+
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j][1] > items[j+1][1]:
+                items[j], items[j + 1] = items[j + 1], items[j]  # Swap!
+    print(items)
     f = open('rezult', 'w')
-    for key in m_list:
-        f.write(str(main_dict[key][1]) + "\n")
-
-
-    # for key in sorted(main_dict):
-    #     # sort_list.update((key, main_dict[key]))
-    #     print(key, main_dict[key])
-
-
-
-
-def sorting(a):
-    b = {}
-    for element in a:
-        print(element.keys())
-        b.update(element)
-        print(sorted(b))
+    for key in items:
+        f.write(key[0] + "\n")
 
 correct(dict_list, main_dict)
-
+items = master_orders_list(main_dict)
+bubble_sort(items)
 
