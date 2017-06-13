@@ -12,12 +12,9 @@
 # received in the input file.
 
 
-dict_list = open("file.py", "r").readlines()
-
-main_dict = {}
-
-
-def correct(dict_list, main_dict):
+def correct():
+    dict_list = open("file.py", "r").readlines()
+    main_dict = {}
     count = 1
     new_dict = {}
     for line in dict_list:
@@ -33,8 +30,7 @@ def correct(dict_list, main_dict):
         else:
             d_k_v[1] = d_k_v[1].replace("\n", "")
             new_dict[d_k_v[0]] = d_k_v[1]
-
-    print(main_dict)
+    return main_dict
 
 
 def master_orders_list(main_dict):
@@ -51,13 +47,10 @@ def master_orders_list(main_dict):
             for sub_dict in main_dict[dict]:
                 t1 = dict, sub_dict
                 list_tulp.append(t1)
-    print(list_tulp)
     return list_tulp
 
 
-
 def bubble_sort(items):
-
     for i in range(len(items)):
         for j in range(len(items) - 1 - i):
             if items[j][1] > items[j+1][1]:
@@ -66,8 +59,9 @@ def bubble_sort(items):
     f = open('rezult', 'w')
     for key in items:
         f.write(key[0] + "\n")
+    f.close()
 
-correct(dict_list, main_dict)
+main_dict = correct()
 items = master_orders_list(main_dict)
 bubble_sort(items)
 
